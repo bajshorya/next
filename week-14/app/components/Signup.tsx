@@ -1,7 +1,7 @@
 "use client";
 
-import axios from "axios";
 import { useState } from "react";
+import { signup } from "../actions/user";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -28,17 +28,13 @@ export default function Signup() {
             }}
           />
           <br />
-          <div className="flex justify-center bg-slate-500 p-4 m-2 hover:cursor-pointer hover:bg-slate-50">
-            <button
-              onClick={() => {
-                axios.post("http://localhost:3000/api/user", {
-                  username,
-                  password,
-                });
-              }}
-            >
-              Signup
-            </button>
+          <div
+            className="flex justify-center bg-slate-500 p-4 m-2 hover:cursor-pointer hover:bg-slate-50"
+            onClick={() => {
+              signup(username, password);
+            }}
+          >
+            <button>Signup</button>
           </div>
         </div>
       </div>
